@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project("basic features")
 
+# force C++ standard
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # get grandparent path to get /shapes path
 cmake_path(GET CMAKE_CURRENT_SOURCE_DIR PARENT_PATH parent_path)
 cmake_path(GET parent_path PARENT_PATH grandparent_path)
@@ -21,6 +25,7 @@ list(REMOVE_ITEM SHAPES_SRC "${SHAPES_MAIN}")
 
 include_directories("${grandparent_path}/shapes/")
 
+add_executable(main main.cpp)
 add_executable(static_assert static_assert.cpp ${SHAPES_SRC})
 
 
